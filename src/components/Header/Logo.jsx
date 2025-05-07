@@ -1,4 +1,4 @@
-import logo from '../../assets/resImage.jpeg';
+import logo from '../../assets/restaurant logo.png';
 const Logo = () => {
     return (
       <div className='logo-container'>

@@ -1,11 +1,16 @@
+
+
 import ResContainer from "./ResContainer";
-import Search from "./Search";
+// import Search from "./Search";
 const Body=()=>{
+    
     return (
-      <>
-      <Search />
+      <div >
+      {/* <Search /> */}
+      
       <ResContainer />
-      </>
+      
+      </div>
     )
   }
 

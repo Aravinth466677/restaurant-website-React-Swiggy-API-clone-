@@ -1,0 +1,27 @@
+.sidebar{
+    width:400px;
+    background-color: black;
+    color: white;
+    left: 0;
+    display: none;
+    transition: 0.5s;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    
+    ul{
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    ul li{
+        list-style: none;
+    }
+}
+@media (max-width: 768px) {
+    .sidebar{
+        margin-left: -450px;
+        display: block;
+    }
+}

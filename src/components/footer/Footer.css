@@ -1,0 +1,21 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color:rgba(247,148,23,255) ;
+    gap: 20px;
+    padding: 20px;
+    bottom: 0;
+    .person{
+        padding: 1px;
+        border: 1px solid black;
+        border-radius: 100%;
+    }
+    .logos{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .logos:hover{
+        cursor: pointer;
+    }
+}
