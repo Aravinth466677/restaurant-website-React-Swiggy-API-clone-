@@ -1,7 +1,7 @@
 // import { ResDetails } from "../utils/ResDetails";
 import ResCards,{PromotedRestaurant} from "./ResCards";
 import { useState,useEffect,useContext } from "react";
- import Shimmer from "./Shimmer";
+import Shimmer from "./Shimmer";
 import React from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../utils/userContext";
@@ -33,7 +33,7 @@ const ResContainer=()=>{
 
     const fetchData = async () => {
       try {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.516179322914557&lng=77.2017139568925&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("/api/restaurants");
         const res = await data.json();
         
         const restaurantList = res?.data?.cards?.find(card => 
@@ -92,10 +92,10 @@ const ResContainer=()=>{
           <input type="text" value={Search} 
           onChange={(e)=>{setSearch(e.target.value)}  } className="searchText" 
           onKeyUp={()=>{
-           let resList3=resList2.filter((res)=>res.info?.name.toLowerCase().includes(Search.toLowerCase()) )
+           let searchedResList=resList2.filter((res)=>res.info?.name.toLowerCase().includes(Search.toLowerCase()) )
           // console.log(resList3);
           
-          setfilderedData(resList3)
+          setfilderedData(searchedResList)
           
            
           }} 
@@ -117,11 +117,11 @@ const ResContainer=()=>{
 
 
         <div className="filter_btn"><button  onClick={()=>{
-            let resList = resList2.filter((res) => Number(res.info?.avgRatingString) > 4.4);
+            let FilderedresList = resList2.filter((res) => Number(res.info?.avgRatingString) > 4.4);
 
 
-           console.log(resList)
-           setfilderedData(resList)
+           console.log(FilderedresList)
+           setfilderedData(FilderedresList)
             
 
         }}>top rated restaurant</button></div>

@@ -4,20 +4,22 @@ import { useTheme } from '../Header/ThemeContext';
 const ResMenu = () => {
     const[resdata,setresdata]=useState(null);
     const[menu,setmenu]=useState(null);
+    const param=useParams();
+
         useEffect(()=>{
+            const fetchMenu=async()=>{
+                const data=await fetch("/api/menu?id="+param.id)
+    
+                const json=await data.json();
+    
+                setresdata(json?.data?.cards[2]?.card?.card?.info);
+                console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+                setmenu(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+                
+            }
+
             fetchMenu()
-        })
-        const fetchMenu=async()=>{
-            const data=await fetch("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.0102&lng=76.9701&restaurantId="+param.id+"&query=Pizza&submitAction=ENTER&source=collection")
-
-            const json=await data.json();
-
-            setresdata(json?.data?.cards[2]?.card?.card?.info);
-            console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-            setmenu(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-            
-        }
-        const param=useParams();
+        },[param.id])
         console.log(param);
         
     const {theme}=useTheme();
