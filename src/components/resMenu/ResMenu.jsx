@@ -1,6 +1,7 @@
 import React,{useEffect ,useState} from 'react'
 import { useParams } from 'react-router';
 import { useTheme } from '../Header/ThemeContext';
+import { apiUrl } from '../../config/api';
 const ResMenu = () => {
     const[resdata,setresdata]=useState(null);
     const[menu,setmenu]=useState(null);
@@ -8,7 +9,7 @@ const ResMenu = () => {
 
         useEffect(()=>{
             const fetchMenu=async()=>{
-                const data=await fetch("/api/menu?id="+param.id)
+                const data=await fetch(apiUrl("/api/menu?id="+param.id))
     
                 const json=await data.json();
     

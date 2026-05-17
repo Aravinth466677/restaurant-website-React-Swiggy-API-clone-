@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { userContext } from "../utils/userContext";
 import { useTheme } from "../Header/ThemeContext";
 import PriceRange from "./PriceRange";
+import { apiUrl } from "../../config/api";
 const ResContainer=()=>{
 
     const [pricefromPR,setpricefromPR]=useState("")
@@ -33,7 +34,7 @@ const ResContainer=()=>{
 
     const fetchData = async () => {
       try {
-        const data = await fetch("/api/restaurants");
+        const data = await fetch(apiUrl("/api/restaurants"));
         const res = await data.json();
         
         const restaurantList = res?.data?.cards?.find(card => 
